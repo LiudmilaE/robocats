@@ -5,35 +5,30 @@ import { SearchField } from '../components/SearchField';
 import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 
-import { setSearchField } from '../actions';
+import { setSearchField, requestRobocats } from '../actions';
 
 const mapStateToProps = state => ({
-  searchField: state.searchCats.searchField
+  searchField: state.searchCats.searchField,
+  isPending: state.requestRobocats.isPending,
+  robocats: state.requestRobocats.robocats,
+  error: state.requestRobocats.error
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+  onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+  onRequestRobocats: () => dispatch(requestRobocats())
 })
 
 class App extends Component {
-  state = {
-    data: []
-  }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data);
-        this.setState({data})
-      })
+    this.props.onRequestRobocats()
   }
 
   render() {
-    const { data } = this.state;
-    const { searchField, onSearchChange } = this.props;
-    let cats = data.filter(cat => cat.username.includes(searchField))
-    if(data && !data.length) {
+    const { searchField, onSearchChange, robocats, isPending } = this.props;
+    let cats = robocats.filter(cat => cat.username.includes(searchField))
+    if(isPending) {
       return <h2>Loading</h2>
     }
     return (
