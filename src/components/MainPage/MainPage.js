@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CardsList } from '../UI/CardsList';
-import { SearchField } from '../SearchField/SearchField';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import SearchField from '../SearchField/SearchField';
+import ErrorBoundary from '../ErrorBoundary';
 import './MainPage.css';
 
 class MainPage extends Component {

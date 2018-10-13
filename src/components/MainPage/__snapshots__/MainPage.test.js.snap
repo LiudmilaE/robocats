@@ -35,7 +35,7 @@ ShallowWrapper {
           <h2>
                     Here you can find a new cute pet!
           </h2>
-          <Unknown
+          <SearchField
                     onSearch={[Function]}
           />
 </header>,
@@ -63,7 +63,7 @@ ShallowWrapper {
             <h2>
               Here you can find a new cute pet!
 </h2>,
-            <Unknown
+            <SearchField
               onSearch={[Function]}
 />,
           ],
@@ -152,7 +152,7 @@ ShallowWrapper {
             <h2>
                         Here you can find a new cute pet!
             </h2>
-            <Unknown
+            <SearchField
                         onSearch={[Function]}
             />
 </header>,
@@ -180,7 +180,7 @@ ShallowWrapper {
               <h2>
                 Here you can find a new cute pet!
 </h2>,
-              <Unknown
+              <SearchField
                 onSearch={[Function]}
 />,
             ],
