@@ -1,3 +1,5 @@
+import { apiCall } from './api/api';
+
 import {
     CHANGE_SEARCH_FIELD,
     REQUEST_ROBOCATS_PENDING,
@@ -12,8 +14,7 @@ export const setSearchField = (text) => ({
 
 export const requestRobocats = () => (dispatch) => {
     dispatch({ type: REQUEST_ROBOCATS_PENDING });
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
+    apiCall('https://jsonplaceholder.typicode.com/users')
       .then(data => dispatch({ type: REQUEST_ROBOCATS_SUCCESS, payload: data}))
       .catch(error => dispatch({ type: REQUEST_ROBOCATS_FAILED, payload: error }))
 }

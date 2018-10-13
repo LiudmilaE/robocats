@@ -63,4 +63,4 @@ describe('requestRobots', () => {
             error: 'error text'
         });
     });
-})
+});

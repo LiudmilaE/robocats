@@ -1,0 +1,1 @@
+export const apiCall = (link) => fetch(link).then(r => r.json());
