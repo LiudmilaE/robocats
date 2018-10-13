@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CardsList } from '../components/UI/CardsList';
-import { SearchField } from '../components/SearchField';
-import ErrorBoundary from '../components/ErrorBoundary';
-import './App.css';
+import MainPage from '../components/MainPage/MainPage';
 
 import { setSearchField, requestRobocats } from '../actions';
 
@@ -21,28 +18,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.onRequestRobocats()
-  }
-
   render() {
-    const { searchField, onSearchChange, robocats, isPending } = this.props;
-    let cats = robocats.filter(cat => cat.username.includes(searchField))
-    if(isPending) {
-      return <h2>Loading</h2>
-    }
-    return (
-      <div className="App App-container">
-        <header className="App-header">
-          <h1 className="App-title">Robocats</h1>
-          <h2>Here you can find a new cute pet!</h2>
-          <SearchField onSearch={onSearchChange}/>
-        </header>
-        <ErrorBoundary>
-          <CardsList data={cats}/>
-        </ErrorBoundary>
-      </div>
-    );
+    return <MainPage {...this.props}/>;
   }
 }
 
